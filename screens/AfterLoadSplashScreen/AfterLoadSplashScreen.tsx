@@ -11,22 +11,22 @@ const slides: { key: string; title: string; text: string; image: Source; backgro
   {
     key: 'one',
     title: 'Base Layout',
-    text: "You think you are fit and what to test your limits?\n\nMaybe you've been told about this and want to give it a go?",
-    image: values.splash_image,
+    text: "Do you want new bases everyday?\n\nThen you are at the right place.Here our team with many clasher share there bases everyday.",
+    image: values.barbarian,
     backgroundColor: '#59b2ab'
   },
   {
     key: 'two',
     title: 'Attack stages',
-    text: 'Go ahead, but beware: this is not easy!! (wel, maybe at first...)',
-    image: values.splash_image,
+    text: 'Do you want to improve your attack strategy?\n\n or you want to push rank here you can get  attack strategy of top players. ',
+    image: values.wizard,
     backgroundColor: '#febe29'
   },
   {
     key: 'three',
-    title: 'Bring the PAIN!',
-    text: 'I take it YOU ARE READY!!\n\n(and you are refusing the possibility to blame me for anything!)',
-    image: values.splash_image,
+    title: 'Clan Promotion!',
+    text: 'Want to Recruit permanent new players or temporary players for CWl!!\n\n Come and promote your can here.',
+    image: values.king,
     backgroundColor: '#22bcb5'
   }
 ];

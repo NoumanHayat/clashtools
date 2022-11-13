@@ -5,9 +5,10 @@ const exerciseImage = require('../assets/temp/excercise-banner.png');
 const flag = require('../assets/temp/us-flag.png');
 const ad = require('../assets/temp/ad.png');
 const splash_image = require('../assets/temp/splash_image.png');
-
+const barbarian = require('../assets/images/barbarian.png');
+const wizard = require('../assets/images/wizard.png');
 const userProfilePic = 'https://fakeface.rest/thumb/view?gender=female&minimum_age=30';
-
+const king=require('../assets/images/king.png');
 const challengeParticipants = [
   {
     name: 'Sara',
@@ -216,5 +217,6 @@ export default {
   notificationsData,
   suggestionItems,
   ad,
-  splash_image
+  splash_image,
+  barbarian,wizard,king
 };
