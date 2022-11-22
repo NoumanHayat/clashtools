@@ -6,7 +6,9 @@ export const person = require('../assets/images/person.png');
 export const background = require('../assets/images/backgroundagain.png');
 export const google = require('../assets/images/google.png');
 export const background2 = require('../assets/images/backgroundtest3.png');
-
+export const cocsetting= require('../assets/images/cocsetting.png');
+export const cocattack = require('../assets/images/cocattack.png');
+export const clanicon = require('../assets/images/clanicon.png');
 export default {
   logo,
   eyeclosed,
@@ -15,5 +17,8 @@ export default {
   lock,
   background,
   google,
-  background2
+  background2,
+  cocsetting,
+  cocattack,
+  clanicon
 };

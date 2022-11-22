@@ -1,133 +1,27 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useEffect } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
+/* eslint-disable prettier/prettier */
+// /* eslint-disable prettier/prettier */
+// /* eslint-disable prettier/prettier */
+// /* eslint-disable react/prop-types */
+// /* eslint-disable react-native/no-inline-styles */
+import React, { } from 'react';
 
 import {
-    Alert,
-    Image,
     ImageBackground,
     SafeAreaView,
     StyleSheet,
     Text,
-    TextInput,
-    TouchableOpacity,
     View,
+    Image,
+    TouchableOpacity
+
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { COLORS, images, SIZES, GRADIENTS } from '../../constants';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { COLORS, images, SIZES } from '../../constants';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import auth from '@react-native-firebase/auth';
-import { useData } from './../hooks';
-// eslint-disable-next-line react/prop-types,@typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line react/prop-types
-
-// namer=[{
-//     name:'nouman'
-// },
-// {
-//     name:'nouman 2'
-// },
-// {
-//     name:'nouman 3'
-// },
-// {
-//     name:'nouman 4'
-// },
-// {
-//     name:'nouman 5'
-// },]
-
-
-
-const UpcomingCard = ({ data,navigation }) => {
-    const { attendEvent } = useData();
-    return (
-        <View style={styles.card}>
-            <View style={styles.EventDetails}>
-                <View style={{ justifyContent: 'center', alignItems: 'center', margin: 5 }}>
-                    <Text style={{ color: '#000000', fontSize: 22, fontWeight: 'bold' }}>{data.name}</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Icon name="update" size={24} color="black" />
-                    <Text style={{ fontSize: 18, color: 'black', marginLeft: 10 }}>
-                        Date:{data.date}
-                    </Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Icon name="camera-timer" size={24} color="black" />
-                    <Text style={{ fontSize: 18, color: 'black', marginLeft: 10 }}>
-                        Time:{data.time}
-                    </Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    {/* <Icon name="location-enter" size={24} color="black" /> */}
-                    <Ionicons name="location" size={24} color="black" />
-                    <Text style={{ fontSize: 18, color: 'black', marginLeft: 10 }}>
-                        Address: {data.address}
-                    </Text>
-                </View>
-                <View >
-                    <View style={{ flexDirection: 'row', paddingBottom: 10 }}>
-                        {/* <Icon name="location-enter" size={24} color="black" /> */}
-                        <MaterialIcons name="description" size={24} color="black" />
-                        <Text style={{ fontSize: 18, color: 'black', marginLeft: 10 }}>
-                            Description:
-                        </Text>
-                    </View>
-                    <Text style={{color:'black'}}>{data.description}</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 10, flex: 1 }}>
-                    <LinearGradient
-                        colors={GRADIENTS.info}
-                        end={{ x: 0, y: 1 }}
-                        start={{ x: 1, y: 0 }}
-                        style={{ borderRadius: 30 }}
-                    >
-                        <TouchableOpacity
-                            style={{
-                                alignItems: 'center',
-                                padding: 10,
-                                flexDirection: 'row'
-                            }}
-                            onPress={() => { attendEvent(data); alert('Event Attended Successfully'); }}
-                        >
-                            <MaterialIcons name="account-tree" size={24} color="white" />
-                            <Text style={{ color: 'white' }}>Attend</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-
-                </View>
-            </View>
-
-        </View>
-    )
-}
+import { FAB, Card, ListItem, Button, Icon } from 'react-native-elements';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 const Screen = ({ navigation }) => {
-    // let currentUser = auth().currentUser;
-    const { getEvent } = useData();
-    const [event, setEvent] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const events = await getEvent();
-                if (events.status == 'success') {
-                    setEvent(events.message);
-                } else {
-                    alert(events.message);
-                }
-            } catch (error) {
-                alert(error);
-            }
-        }
-        fetchData();
-    }, [getEvent, setEvent]);
-
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -135,64 +29,75 @@ const Screen = ({ navigation }) => {
                 flex: 1,
                 paddingVertical: SIZES.padding,
             }}>
-            <SafeAreaView>
-                <KeyboardAwareScrollView>
-                    <View
-                        style={{
-                            flex: 1,
-                        }}>
-                        <View style={{ margin: 5, justifyContent: 'center', alignItems: 'center', fontWeight: 'bold' }}>
-                            <Text style={{ fontSize: 30 ,color:'white'}}>CarsClubNZ</Text>
-                        </View>
+            <View style={{ flex: 0.4, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 35, color: 'black', fontWeight: "bold" }}>Clash Of Clan Tools</Text>
+            </View>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ width: '50%' }}>
+                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                                <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
+                                    <Card.Image
+                                        style={{ width: 80, height: 70 }}
+                                        resizeMode="cover"
+                                        source={images.cocattack}
+                                    />
+                                </View>
+                                <Card.Title>attack strategies</Card.Title>
+                            </TouchableOpacity>
+                        </Card>
                     </View>
-                    <View style={styles.OrganizedEvent}>
-                        <Text style={{ fontSize: 30, color: 'white' }}>UpComing Event</Text>
-                        <View style={{ marginTop: 10 }}>
-                            {event.map((item, index) => {
-                                return (<UpcomingCard key={index} data={item} navigation={navigation} />);
-                            })}
-                        </View>
+                    <View style={{ width: '50%' }}>
+                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={() => { navigation.push("Town hall Base"); }}>
+                                <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
+                                    <Card.Image
+                                        style={{ width: 70, height: 70 }}
+                                        resizeMode="cover"
+                                        source={{uri:'https://static.wikia.nocookie.net/clashofclans/images/1/1d/Giga_Inferno15-5.png'}}
+                                    />
+                                </View>
+                                <Card.Title>TownHall base</Card.Title>
+                            </TouchableOpacity>
+                        </Card>
                     </View>
-                </KeyboardAwareScrollView>
-            </SafeAreaView>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ width: '50%' }}>
+                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                                <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
+                                    <Card.Image
+                                        style={{ width: 70, height: 70 }}
+                                        resizeMode="cover"
+                                        source={{uri:'https://static.wikia.nocookie.net/clashofclans/images/4/43/Builder_Hall9.png'}}
+                                    />
+                                </View>
+                                <Card.Title>Builder Base</Card.Title>
+                            </TouchableOpacity>
+                        </Card>
+                    </View>
+                    <View style={{ width: '50%' }}>
+                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                                <View style={{ alignItems: 'center', padding: 20,paddingBottom:10 }}>
+                                    <Card.Image
+                                        style={{ width: 70, height: 60 }}
+                                        resizeMode="cover"
+                                        source={images.cocsetting}
+                                    />
+                                </View>
+                                <Card.Title>COC News</Card.Title>
+                            </TouchableOpacity>
+                        </Card>
+                    </View>
+                </View>
+
+            </View>
+            <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="settings" size={24} color="white" />} placement={"right"} />
         </ImageBackground >
     );
 };
 
 export default Screen;
-
-const styles = StyleSheet.create({
-    OrganizedEvent: {
-        margin: 10
-    },
-    EventDetails: {
-
-    },
-    card: {
-        backgroundColor: '#E9E8F3',
-        borderRadius: 15,
-        padding: 10,
-        marginTop: 10,
-    },
-    shadow: {
-        shadowColor: '#000', // for iphone drop shadow (specifies the android equivalent, elevation: 1)
-        shadowOffset: {
-            width: 0,
-            height: 1.5,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        elevation: 1,
-    },
-    textBoxSign: {
-        flexDirection: 'row',
-        height: 45,
-        marginHorizontal: 5,
-        marginTop: 5,
-        paddingHorizontal: SIZES.radius,
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.lightGray,
-        elevation: 2,
-    },
-    textAbove: { fontSize: 14, marginLeft: 12 },
-});
