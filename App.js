@@ -15,6 +15,9 @@ import {DataProvider} from './screens/hooks';
 // import Notification from './screens/Dashbord/notification';
 import Home from './screens/Dashbord/home';
 import Townhall from './screens/Dashbord/Townhall';
+import BuilderHall from './screens/Dashbord/BuilderHall';
+import attackStrategies from './screens/Dashbord/attackStrategies';
+import clashNews from './screens/Dashbord/clashNews';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -46,8 +49,14 @@ const AppStarting = () => {
             initialRouteName="Clash Tools">
             <Stack.Screen name="Clash Tools" component={Home} />
             <Stack.Screen name="Town hall Base" component={Townhall} />
+            <Stack.Screen name="Builder Hall Base" component={BuilderHall} />
+            <Stack.Screen
+              name="attack Strategies"
+              component={attackStrategies}
+            />
+            <Stack.Screen name="Clash News" children={clashNews} />
           </Stack.Navigator>
-        </NavigationContainer> 
+        </NavigationContainer>
       </View>
     </SafeAreaView>
   );

@@ -8,18 +8,14 @@ import React, { } from 'react';
 
 import {
     ImageBackground,
-    SafeAreaView,
-    StyleSheet,
     Text,
     View,
-    Image,
     TouchableOpacity
 
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { COLORS, images, SIZES } from '../../constants';
+import { images, SIZES } from '../../constants';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { FAB, Card, ListItem, Button, Icon } from 'react-native-elements';
+import { FAB, Card } from 'react-native-elements';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const Screen = ({ navigation }) => {
     return (
@@ -36,7 +32,7 @@ const Screen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ width: '50%' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                            <TouchableOpacity onPress={() => { navigation.push("attack Strategies"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
                                     <Card.Image
                                         style={{ width: 80, height: 70 }}
@@ -66,7 +62,7 @@ const Screen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ width: '50%' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                            <TouchableOpacity onPress={() => { navigation.push("Builder Hall Base"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 70 }}
@@ -80,7 +76,7 @@ const Screen = ({ navigation }) => {
                     </View>
                     <View style={{ width: '50%' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { alert("okk") }}>
+                            <TouchableOpacity onPress={() => { navigation.push("Clash News"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:10 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 60 }}
