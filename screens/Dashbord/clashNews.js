@@ -16,8 +16,6 @@ import {
     FlatList,
 } from 'react-native';
 import { images, SIZES } from '../../constants';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { FloatingAction } from 'react-native-floating-action';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const CustomCard = (props) => {
     return (
@@ -26,11 +24,10 @@ const CustomCard = (props) => {
         }}>
             <View style={styles.cardStyle}>
                 <View>
-                    {true ?(<Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
-                     <View>
-                        <Text>Hello</Text>
-                    </View>}
-                    {/* <Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} /> */}
+                    {true ? (<Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
+                        <View>
+                            <Text>Hello</Text>
+                        </View>}
                     <View style={styles.textArea}>
                         <Text style={{ fontSize: 23, color: 'black' }}>Here we Go!</Text>
                         <Text>We will remove extra Barracks and Dark Barracks buildings and
@@ -87,32 +84,7 @@ const DATA = [
 ];
 
 const Screen = ({ navigation }) => {
-    const actions = [
-        {
-            text: 'Share your Base',
-            icon: <MaterialIcons name="file-upload" size={24} color="white" />,
-            name: 'bt_language',
-            position: 1,
-        },
-        {
-            text: 'Clan Requirements',
-            icon: images.clanicon,
-            name: 'bt_accessibility',
-            position: 2,
-        },
-        {
-            text: 'Wallpaper',
-            icon: <MaterialIcons name="wallpaper" size={24} color="white" />,
-            name: 'bt_room',
-            position: 3,
-        },
-        {
-            text: 'Report',
-            icon: <MaterialIcons name="report-problem" size={24} color="white" />,
-            name: 'bt_videocam',
-            position: 4,
-        },
-    ];
+
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -128,14 +100,6 @@ const Screen = ({ navigation }) => {
                     keyExtractor={item => item.id}
                 />
             </View>
-            {/* </ScrollView> */}
-            <FloatingAction
-                actions={actions}
-                onPressItem={name => {
-                    console.log(`selected button: ${name}`);
-                }}
-            />
-            {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="file-upload" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >
 
     );
