@@ -26,14 +26,11 @@ const CustomCard = (props) => {
         }}>
             <View style={styles.cardStyle}>
                 <View>
-                    {false ?(<Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
+                    {true ?(<Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
                      <View>
                         <Text>Hello</Text>
                     </View>}
                     {/* <Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} /> */}
-
-
-
                     <View style={styles.textArea}>
                         <Text style={{ fontSize: 23, color: 'black' }}>Here we Go!</Text>
                         <Text>We will remove extra Barracks and Dark Barracks buildings and
