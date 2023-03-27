@@ -59,8 +59,8 @@ const Screen = ({ navigation }) => {
                         </Card>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ width: '50%' }}>
+                <View style={{ flexDirection: 'row'}}>
+                    <View style={{ width: '50%',alignSelf:'flex-start'  }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={() => { navigation.push("Builder Hall Base"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
@@ -75,7 +75,7 @@ const Screen = ({ navigation }) => {
                         </Card>
                     </View>
                     <View style={{ width: '50%' }}>
-                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        {/* <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={() => { navigation.push("Clash News"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:10 }}>
                                     <Card.Image
@@ -86,7 +86,7 @@ const Screen = ({ navigation }) => {
                                 </View>
                                 <Card.Title>COC News</Card.Title>
                             </TouchableOpacity>
-                        </Card>
+                        </Card> */}
                     </View>
                 </View>
 

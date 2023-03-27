@@ -18,7 +18,7 @@ import {
 
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { COLORS, images, SIZES } from '../../constants';
+import { COLORS, images, SIZES } from '../../../constants';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { FAB, Card, ListItem, Button, Icon } from 'react-native-elements';
 import { FloatingAction } from 'react-native-floating-action';

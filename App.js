@@ -14,10 +14,10 @@ import AfterLoadSplashScreen from './screens/AfterLoadSplashScreen/AfterLoadSpla
 import {DataProvider} from './screens/hooks';
 // import Notification from './screens/Dashbord/notification';
 import Home from './screens/Dashbord/home';
-import Townhall from './screens/Dashbord/Townhall';
-import BuilderHall from './screens/Dashbord/BuilderHall';
-import attackStrategies from './screens/Dashbord/attackStrategies';
-import clashNews from './screens/Dashbord/clashNews';
+import Townhall from './screens/Dashbord/Townhall/Townhall';
+import BuilderHall from './screens/Dashbord/BuilderHall/BuilderHall';
+import attackStrategies from './screens/Dashbord/attackStrategies/attackStrategies';
+import DisplayScreen from './screens/Dashbord/DisplayScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -41,12 +41,12 @@ const AppStarting = () => {
       <View style={{flex: 1}}>
         {/* <Notification /> */}
         <NavigationContainer>
-          {/* <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} /> */}
+          <StatusBar barStyle="dark-content" backgroundColor={COLORS.gray} />
           <Stack.Navigator
-            // screenOptions={{
-            //   headerShown: false,
-            // }}
-            initialRouteName="Clash Tools">
+            screenOptions={{
+              headerShown: false,
+            }}
+            initialRouteName="DisplayScreen">
             <Stack.Screen name="Clash Tools" component={Home} />
             <Stack.Screen name="Town hall Base" component={Townhall} />
             <Stack.Screen name="Builder Hall Base" component={BuilderHall} />
@@ -54,7 +54,7 @@ const AppStarting = () => {
               name="attack Strategies"
               component={attackStrategies}
             />
-            <Stack.Screen name="Clash News" children={clashNews} />
+            <Stack.Screen name="DisplayScreen" children={DisplayScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
