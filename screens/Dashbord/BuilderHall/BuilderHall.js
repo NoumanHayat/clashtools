@@ -26,32 +26,7 @@ import ScreenHader from '../../../components/ScreenHaderCopy';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const Screen = ({ navigation }) => {
-    const actions = [
-        {
-            text: 'Share your Base',
-            icon: <MaterialIcons name="file-upload" size={24} color="white" />,
-            name: 'bt_language',
-            position: 1
-        },
-        {
-            text: 'Clan Requirements',
-            icon: images.clanicon,
-            name: 'bt_accessibility',
-            position: 2
-        },
-        {
-            text: 'Wallpaper',
-            icon: <MaterialIcons name="wallpaper" size={24} color="white" />,
-            name: 'bt_room',
-            position: 3
-        },
-        {
-            text: 'Report',
-            icon: <MaterialIcons name="report-problem" size={24} color="white" />,
-            name: 'bt_videocam',
-            position: 4
-        }
-    ];
+   
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -60,7 +35,7 @@ const Screen = ({ navigation }) => {
                 paddingVertical: SIZES.padding,
             }}>
             <ScrollView >
-            <ScreenHader title="Base" navigation={navigation} onlyBack={true} />
+            <ScreenHader title="Builder Hall" navigation={navigation} onlyBack={true} />
                 <View style={{ flex: 1, }}>
                     
                     <View style={{ flexDirection: 'row' }}>
@@ -157,12 +132,7 @@ const Screen = ({ navigation }) => {
                     </View>
                 </View>
             </ScrollView>
-            <FloatingAction
-                actions={actions}
-                onPressItem={name => {
-                    console.log(`selected button: ${name}`);
-                }}
-            />
+            
             {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="file-upload" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >
 

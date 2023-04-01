@@ -20,14 +20,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { FAB, Card } from 'react-native-elements';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const Screen = ({ navigation }) => {
-    const OpenSettingsButton = ({children}) => {
-        const handlePress = useCallback(async () => {
-          // Open the custom settings if the app has one
-          await Linking.openSettings();
-        }, []);
-      
-        return <Button title={children} onPress={handlePress} />;
-      };
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -115,7 +107,7 @@ const Screen = ({ navigation }) => {
                 </View>
 
             </View>
-            <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="settings" size={24} color="white" />} placement={"right"} />
+            {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="settings" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >
     );
 };

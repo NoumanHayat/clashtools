@@ -20,7 +20,6 @@ import attackStrategies from './screens/Dashbord/attackStrategies/attackStrategi
 import DisplayScreen from './screens/Dashbord/DisplayScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
 const Stack = createNativeStackNavigator();
 const AppStarting = () => {
   useEffect(() => {
@@ -46,7 +45,7 @@ const AppStarting = () => {
             screenOptions={{
               headerShown: false,
             }}
-            initialRouteName="Clash Tools">
+            initialRouteName="DisplayScreen">
             <Stack.Screen name="Clash Tools" component={Home} />
             <Stack.Screen name="Town hall Base" component={Townhall} />
             <Stack.Screen name="Builder Hall Base" component={BuilderHall} />

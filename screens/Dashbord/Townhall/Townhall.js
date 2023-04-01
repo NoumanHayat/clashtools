@@ -8,50 +8,17 @@ import React, { } from 'react';
 
 import {
     ImageBackground,
-    SafeAreaView,
-    StyleSheet,
-    Text,
     View,
-    Image,
     TouchableOpacity,
     ScrollView
 
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { COLORS, images, SIZES } from '../../../constants';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { FAB, Card, ListItem, Button, Icon } from 'react-native-elements';
-import { FloatingAction } from 'react-native-floating-action';
+import { images, SIZES } from '../../../constants';
+import { Card } from 'react-native-elements';
 import ScreenHader from '../../../components/ScreenHaderCopy';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const Screen = ({ navigation }) => {
-    const actions = [
-        {
-            text: 'Share your Base',
-            icon: <MaterialIcons name="file-upload" size={24} color="white" />,
-            name: 'bt_language',
-            position: 1
-        },
-        {
-            text: 'Clan Requirements',
-            icon: images.clanicon,
-            name: 'bt_accessibility',
-            position: 2
-        },
-        {
-            text: 'Wallpaper',
-            icon: <MaterialIcons name="wallpaper" size={24} color="white" />,
-            name: 'bt_room',
-            position: 3
-        },
-        {
-            text: 'Report',
-            icon: <MaterialIcons name="report-problem" size={24} color="white" />,
-            name: 'bt_videocam',
-            position: 4
-        }
-    ];
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -60,7 +27,7 @@ const Screen = ({ navigation }) => {
                 paddingVertical: SIZES.padding,
             }}>
             <ScrollView >
-            <ScreenHader title="Base" navigation={navigation} onlyBack={true} />
+            <ScreenHader title="TownHall" navigation={navigation} onlyBack={true} />
 
                 <View style={{ flex: 1, }}>
                     
@@ -189,12 +156,6 @@ const Screen = ({ navigation }) => {
                     </View>
                 </View>
             </ScrollView>
-            <FloatingAction
-                actions={actions}
-                onPressItem={name => {
-                    console.log(`selected button: ${name}`);
-                }}
-            />
             {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="file-upload" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >
 

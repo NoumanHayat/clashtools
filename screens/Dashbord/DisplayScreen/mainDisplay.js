@@ -135,7 +135,7 @@ const Screen = ({ navigation }) => {
                 paddingVertical: SIZES.padding,
 
             }}>
-            <ScreenHader title="Chats" navigation={navigation} onlyBack={true} />
+            <ScreenHader title="Select Base" navigation={navigation} onlyBack={true} />
             {home ? <><View style={{ marginHorizontal: 10 }}>
                 <ScrollView horizontal style={styles.listTab}>
                     {tablist.map((tab) => {
