@@ -4,7 +4,7 @@
 // /* eslint-disable prettier/prettier */
 // /* eslint-disable react/prop-types */
 // /* eslint-disable react-native/no-inline-styles */
-import React, { useCallback} from 'react';
+import React, { useCallback, useState } from 'react';
 
 import {
     ImageBackground,
@@ -12,14 +12,18 @@ import {
     View,
     TouchableOpacity,
     Linking,
-    Button
+    Button,
+    Modal
 
 } from 'react-native';
 import { images, SIZES } from '../../constants';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { FAB, Card } from 'react-native-elements';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
+import ModalLayout from '../../components/ModalLayout';
+
 const Screen = ({ navigation }) => {
+    const [vasible, setVasible] = useState(false);
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -76,20 +80,20 @@ const Screen = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                    {/* <View style={{ width: '50%', alignSelf: 'flex-start' }}>
+                    <View style={{ width: '50%', alignSelf: 'flex-start' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { navigation.push("Builder Hall Base"); }}>
+                            <TouchableOpacity onPress={() => { setVasible(true)}}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 70 }}
                                         resizeMode="cover"
-                                        source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/4/43/Builder_Hall9.png' }}
+                                        source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/0/06/LLT_Info.png' }}
                                     />
                                 </View>
-                                <Card.Title>Builder Base</Card.Title>
+                                <Card.Title>Paid Bases for trophy push</Card.Title>
                             </TouchableOpacity>
                         </Card>
-                    </View> */}
+                    </View>
                     <View style={{ width: '50%' }}>
                         {/* <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={() => { navigation.push("Clash News"); }}>
@@ -105,7 +109,23 @@ const Screen = ({ navigation }) => {
                         </Card> */}
                     </View>
                 </View>
-
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={vasible}
+                    onRequestClose={() => setVasible(!vasible)}
+                >
+                    <ModalLayout onClose={() => setVasible(!vasible)}>
+                        <View style={{ alignItems: 'center' }}>
+                            <Text fontWeight="SemiBold" style={{ fontSize: 28, color: 'black' }}>
+                                Coming Soon! 😀
+                            </Text>
+                            <Text fontWeight="Medium" style={{ fontSize: 14, color: 'black' }}>
+                                Please wait for new version
+                            </Text>
+                        </View>
+                    </ModalLayout>
+                </Modal>
             </View>
             {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="settings" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >

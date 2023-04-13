@@ -32,7 +32,7 @@ const AppStarting = ({ navigation }) => {
                 screenOptions={{
                     headerShown: false,
                 }}
-                initialRouteName="mainDisplay">
+                initialRouteName="details">
 
                 <Stack.Screen name="mainDisplay" component={mainDisplay} />
                 <Stack.Screen name="details" component={details} />

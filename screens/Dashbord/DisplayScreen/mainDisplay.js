@@ -26,9 +26,7 @@ import AppButton from '../../../components/AppButton';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 const CustomCard = ({ navigation }) => {
     return (
-        // <TouchableOpacity onPress={() => {
-        //     alert('Press');
-        // }}>
+
         <View style={styles.cardStyle}>
             <View>
                 {true ? (
@@ -46,7 +44,7 @@ const CustomCard = ({ navigation }) => {
                         <Text style={{ fontSize: 13, color: 'gray' }}>Farming</Text>
                     </View>
                 </View>
-                <View style={{ marginTop: 20, alignItems: 'flex-end' }}>
+                <View style={{ marginTop: 10, alignItems: 'flex-end' }}>
                     <AppButton
                         onPress={() => { navigation.push('details') }}
                         text="Copy Link"
@@ -59,7 +57,6 @@ const CustomCard = ({ navigation }) => {
                 </View>
             </View>
         </View>
-        // </TouchableOpacity>
     );
 };
 const DATA = [
@@ -207,7 +204,7 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         backgroundColor: '#F7F7FE', borderRadius: 10,
-        padding: 10, margin: 20, shadowColor: 'black',
+        padding: 10, marginHorizontal: 20, shadowColor: 'black', marginVertical:5,
         shadowOffset: {
             width: 10,
             height: 10,

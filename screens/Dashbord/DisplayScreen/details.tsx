@@ -29,91 +29,12 @@ import AppButton from '../../../components/AppButton';
 import Hyperlink from 'react-native-hyperlink';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ModalLayout from '../../../components/ModalLayout';
-
+import { useData } from './../../hooks';
 
 import { FloatingAction } from 'react-native-floating-action';
 
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-const CustomCard = (props) => {
-    return (
-        <TouchableOpacity onPress={() => {
-            alert('Press');
-        }}>
-            <View style={styles.cardStyle}>
-                <View>
-                    {true ? (<Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
-                        <View>
-                            <Text>Image is unable to load</Text>
-                        </View>}
-                    <View style={styles.textArea}>
-                        <View>
-                            <Text style={{ fontSize: 20, color: 'black' }}>Town Hall</Text>
-                            <Text style={{ fontSize: 13, color: 'gray' }}>Town Hall 15</Text>
-                        </View>
-                        <View>
-                            <Text style={{ fontSize: 20, color: 'black' }}>Category</Text>
-                            <Text style={{ fontSize: 13, color: 'gray' }}>Farming</Text>
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 20, alignItems: 'flex-end' }}>
-                        <AppButton
-                            onPress={() => { alert('Working'); }}
-                            text="Copy Link"
-                            style={{
-                                // width: '40%',
-                            }}
-                            icon={icons.stats}
-                            textStyle={{ color: 'white', letterSpacing: 2 }}
-                        />
-                    </View>
-                </View>
-            </View>
-        </TouchableOpacity>
-    );
-};
-const DATA = [
-    {
-        id: '1',
-        title: 'First Item',
-    },
-    {
-        id: '2',
-        title: 'Second Item',
-    },
-    {
-        id: '3',
-        title: 'Third Item',
-    },
-    {
-        id: '4',
-        title: 'First Item',
-    },
-    {
-        id: '5',
-        title: 'Second Item',
-    },
-    {
-        id: '6',
-        title: 'Third Item',
-    },
-    {
-        id: '7',
-        title: 'First Item',
-    },
-    {
-        id: '8',
-        title: 'Second Item',
-    },
-    {
-        id: '9',
-        title: 'Third Item',
-    },
-    {
-        id: '10',
-        title: 'First Item',
-    },
-];
 
 const Screen = ({ navigation }) => {
     const actions = [
@@ -130,21 +51,11 @@ const Screen = ({ navigation }) => {
             position: 2
         }
     ];
-    const home = true
     const [status, setStatus] = useState('All');
-    const tablist = [
-        { status: 'All' },
-        { status: 'FARMING' },
-        { status: 'TROPHY' },
-        { status: 'WAR' },
-        { status: 'TROLL' },
-    ];
     const data = [
-        { key: '2', value: 'Appliances' },
-        { key: '3', value: 'Cameras' },
-        { key: '5', value: 'Vegetables' },
-        { key: '6', value: 'Diary Products' },
-        { key: '7', value: 'Drinks' },
+        { key: '2', value: 'Base Link does not work' },
+        { key: '3', value: 'Base link does match image' },
+        { key: '5', value: 'Something else' },
     ];
 
     const [selected, setSelected] = useState('Appliances');
@@ -152,7 +63,8 @@ const Screen = ({ navigation }) => {
         setStatus(status);
     }
     const [vasible, setVasible] = useState(false);
-    const [vasibleReport,setVasibleReport]=useState(false);
+    const [vasibleReport, setVasibleReport] = useState(false);
+    const { Action } = useData();
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -170,37 +82,21 @@ const Screen = ({ navigation }) => {
             </View>
             <View style={styles.buttonLine}>
                 <View style={{}}>
-                    {/* <AppButton
+                    <AppButton
                         onPress={async () => {
-                            let url = 'http://maps.apple.com/?ll=37.484847,-122.148386%22';
-
                             const handlePress = async () => {
-                                // Open the custom settings if the app has one
-                                await Linking.getInitialURL().then((url) => {
-                                    if (url) {
-                                        console.log('Initial url is: ' + url);
-                                    }
-                                }).catch(err => console.error('An error occurred', err));
-                                Linking.canOpenURL(url)
-                                    .then(supported => {
-                                        if (!supported) {
-                                            console.log("Can't handle url: " + url);
-                                        } else {
-                                            return Linking.openURL(url);
-                                        }
-                                    })
-                                    .catch(err => console.error('An error occurred', err));
+                                Action();
                             };
                             handlePress();
                         }}
-                        text="Copy Link"
+                        text="Action "
                         style={{
                             // width: '40%',
                             backgroundColor: '#445cda'
                         }}
                         // icon={icons.stats}
                         textStyle={{ color: 'white', letterSpacing: 2 }}
-                    /> */}
+                    />
                 </View>
                 <View style={{}}>
                     <AppButton
@@ -272,22 +168,22 @@ const Screen = ({ navigation }) => {
                                     marginLeft: 20,
                                     color: 'gray',
                                     justifyContent: 'center',
-                                    alignItems: 'center', 
+                                    alignItems: 'center',
                                 }}
                             />
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center' }} >
-                        <AppButton
-                            onPress={() => { navigation.push('Status') }}
-                            text="Submit"
-                            style={{
-                                // width: '100%',
-                                marginTop: 30,
-                                paddingHorizontal: 40,
-                            }}
-                            textStyle={{ color: 'white', letterSpacing: 2,fontFamily:'Mulish-Black',fontSize:20 }}
-                        />
-                    </View>
+                            <AppButton
+                                onPress={() => { navigation.push('Status') }}
+                                text="Submit"
+                                style={{
+                                    // width: '100%',
+                                    marginTop: 30,
+                                    paddingHorizontal: 40,
+                                }}
+                                textStyle={{ color: 'white', letterSpacing: 2, fontFamily: 'Mulish-Black', fontSize: 20 }}
+                            />
+                        </View>
                     </View>
                 </ModalLayout>
             </Modal>
@@ -301,7 +197,7 @@ const Screen = ({ navigation }) => {
             >
                 <ModalLayout onClose={() => setVasibleReport(!vasibleReport)}>
                     <View style={{ alignItems: 'center' }}>
-                    <View style={{ marginRight: 5, ...styles.textBoxSignSmallTitle }}>
+                        {/* <View style={{ marginRight: 5, ...styles.textBoxSignSmallTitle }}>
                             <TextInput
                                 placeholder="Title"
                                 placeholderTextColor='gray'
@@ -314,7 +210,7 @@ const Screen = ({ navigation }) => {
                                     marginLeft: 20,
                                     color: 'gray',
                                     justifyContent: 'center',
-                                    alignItems: 'center', 
+                                    alignItems: 'center',
                                 }}
                             />
                         </View>
@@ -331,22 +227,40 @@ const Screen = ({ navigation }) => {
                                     marginLeft: 20,
                                     color: 'gray',
                                     justifyContent: 'center',
-                                    alignItems: 'center', 
+                                    alignItems: 'center',
                                 }}
                             />
-                        </View>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }} >
-                        <AppButton
-                            onPress={() => { navigation.push('Status') }}
-                            text="Submit"
-                            style={{
-                                // width: '100%',
-                                marginTop: 30,
-                                paddingHorizontal: 40,
-                            }}
-                            textStyle={{ color: 'white', letterSpacing: 2,fontFamily:'Mulish-Black',fontSize:20 }}
+                        </View> */}
+                        <Text style={{color:'black'}}>What would you like to report?</Text>
+                        <View>
+                        <SelectList
+                            setSelected={(val) => setSelected(val)}
+                            data={data}
+                            inputStyles={{color: 'gray'}}
+                            dropdownTextStyles={{color: 'gray'}}
+                             boxStyles={styles.dropdownBox}
+                            save="value"
+                            search={false}
+                            searchPlaceholder={'Selected'}
+                            arrowicon={<View >
+                                <Feather name="chevron-down" size={24} color="black" />
+                            </View>
+                            }
                         />
                     </View>
+
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }} >
+                            <AppButton
+                                onPress={() => { console.log('ok'); test(); }}
+                                text="Submit"
+                                style={{
+                                    // width: '100%',
+                                    marginTop: 30,
+                                    paddingHorizontal: 40,
+                                }}
+                                textStyle={{ color: 'white', letterSpacing: 2, fontFamily: 'Mulish-Black', fontSize: 20 }}
+                            />
+                        </View>
                     </View>
                 </ModalLayout>
             </Modal>
@@ -372,21 +286,30 @@ const styles = StyleSheet.create({
         // flexDirection: 'row',
         height: 300,
         // flex: 1,
-        
+
         borderRadius: 2,
         backgroundColor: 'lightGray',
         elevation: 2,
         marginTop: 20,
-        padding:5,
-        width:'100%',
+        padding: 5,
+        width: '100%',
     },
-    textBoxSignSmallTitle:{
-        height: 50, 
+    textBoxSignSmallTitle: {
+        height: 50,
         borderRadius: 2,
         backgroundColor: 'lightGray',
         elevation: 2,
         marginTop: 4,
-        padding:5,
-        width:'100%', 
+        padding: 5,
+        width: '100%',
+    },
+    dropdownBox: {
+        flexDirection: 'row',
+        height: 50,
+        borderRadius: 5,
+        marginTop: 20,
+        backgroundColor: 'white',
+        marginBottom: 0,
+        borderWidth:1
     }
 });
