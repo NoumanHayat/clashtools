@@ -45,7 +45,7 @@ const AppStarting = () => {
             screenOptions={{
               headerShown: false,
             }}
-            initialRouteName="DisplayScreen">
+            initialRouteName="Clash Tools">
             <Stack.Screen name="Clash Tools" component={Home} />
             <Stack.Screen name="Town hall Base" component={Townhall} />
             <Stack.Screen name="Builder Hall Base" component={BuilderHall} />
