@@ -33,7 +33,6 @@ const AppStarting = ({ navigation }) => {
                     headerShown: false,
                 }}
                 initialRouteName="mainDisplay">
-
                 <Stack.Screen name="mainDisplay" component={mainDisplay} />
                 <Stack.Screen name="details" component={details} />
             </Stack.Navigator>
