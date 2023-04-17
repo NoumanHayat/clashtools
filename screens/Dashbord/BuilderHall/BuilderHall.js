@@ -25,7 +25,8 @@ import { FloatingAction } from 'react-native-floating-action';
 import ScreenHader from '../../../components/ScreenHaderCopy';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-const Screen = ({ navigation }) => {
+const Screen = ({ navigation,route }) => {
+    // console.log(route.params);
    
     return (
         <ImageBackground
@@ -39,11 +40,11 @@ const Screen = ({ navigation }) => {
                 <View style={{ flex: 1, }}>
                     
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={{ width: '50%' }}>
+                        <View style={{ width: '50%' }}> 
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen',{townHall:9,Data:route.params})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
-                                        <Card.Image
+                                        <Card.Image 
                                             style={{ width: 80, height: 70 }}
                                             resizeMode="cover"
                                             source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/4/43/Builder_Hall9.png/revision/latest/scale-to-width-down/100?cb=20190616210631' }}

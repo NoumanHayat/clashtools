@@ -4,7 +4,7 @@
 // /* eslint-disable prettier/prettier */
 // /* eslint-disable react/prop-types */
 // /* eslint-disable react-native/no-inline-styles */
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
     ImageBackground,
@@ -21,9 +21,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { FAB, Card } from 'react-native-elements';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalLayout from '../../components/ModalLayout';
+import { useData } from './../hooks';
 
 const Screen = ({ navigation }) => {
     const [vasible, setVasible] = useState(false);
+    const { getData } = useData();
+    const [data, setData] = useState([{}])
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -36,23 +39,12 @@ const Screen = ({ navigation }) => {
             </View>
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row' }}>
-                    {/* <View style={{ width: '50%' }}>
-                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { navigation.push("attack Strategies"); }}>
-                                <View style={{ alignItems: 'center', padding: 20,paddingBottom:0 }}>
-                                    <Card.Image
-                                        style={{ width: 80, height: 70 }}
-                                        resizeMode="cover"
-                                        source={images.cocattack}
-                                    />
-                                </View>
-                                <Card.Title>attack strategies</Card.Title>
-                            </TouchableOpacity>
-                        </Card>
-                    </View> */}
                     <View style={{ width: '50%', alignSelf: 'flex-start' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { navigation.push("Builder Hall Base"); }}>
+                            <TouchableOpacity onPress={async () => {
+                                let res = await getData();
+                                navigation.push("Builder Hall Base", res);
+                            }}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 70 }}
@@ -66,7 +58,10 @@ const Screen = ({ navigation }) => {
                     </View>
                     <View style={{ width: '50%' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { navigation.push("Town hall Base"); }}>
+                            <TouchableOpacity onPress={async () => {
+                                let res = await getData();
+                                navigation.push("Town hall Base", res);
+                            }}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 70 }}
@@ -82,7 +77,7 @@ const Screen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ width: '50%', alignSelf: 'flex-start' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { setVasible(true)}}>
+                            <TouchableOpacity onPress={() => { setVasible(true) }}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                     <Card.Image
                                         style={{ width: 70, height: 70 }}
@@ -127,7 +122,6 @@ const Screen = ({ navigation }) => {
                     </ModalLayout>
                 </Modal>
             </View>
-            {/* <FAB onPress={() => { alert("Ok"); }} icon={<MaterialIcons name="settings" size={24} color="white" />} placement={"right"} /> */}
         </ImageBackground >
     );
 };

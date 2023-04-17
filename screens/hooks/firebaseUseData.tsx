@@ -7,6 +7,14 @@ import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+
+import DataBuilder from '../Data/DataBuilder.json';
+import HomeFarming from '../Data/HomeFarming.json';
+import HomeTroll from '../Data/HomeTroll.json';
+import HomeTrophy from '../Data/HomeTrophy.json';
+import HomeWar from '../Data/HomeWar.json';
+
+
 export const sendReport = async (baseId: string, title: string, details: string,) => {
   let response;
   try {
@@ -25,17 +33,40 @@ export const sendReport = async (baseId: string, title: string, details: string,
   }
   return ({ status: 'success', message: 'success' });
 }
-// export const getUrl = async (baseId: string,title: string,details: string,) => {
-//   console.log('------------------------------------');
-//   const url = await storage().ref('/Th8Home/Th8War').listAll();
-//   url._items.forEach(async (e)=>{
-//     await e.getDownloadURL().then((es)=>{
-//       console.log(e.path)
-//       console.log(es)
-//     })
-//   })
-// } 
 export const Action = async () => {
-  const d = new Date();
-  console.log(d);
+  console.log('Starting...');
+  const dataSet = [{}];
+  dataSet.pop();
+  await firestore()
+    .collection('AllData')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(documentSnapshot => {
+        dataSet.push(documentSnapshot.data());
+      });
+    });
+  // await firestore()
+  //   .collection('HomeFarming')
+  //   .get()
+  //   .then(querySnapshot => {
+  //     querySnapshot.forEach(documentSnapshot => {
+  //       dataSet.push(documentSnapshot.data());
+  //     });
+  //   });
+
+  console.log(dataSet.length);
 }
+export const getData = async () => {
+  console.log('Starting...');
+  const dataSet = [{}];
+  dataSet.pop();
+  await firestore()
+    .collection('AllData')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(documentSnapshot => {
+        dataSet.push(documentSnapshot.data());
+      });
+    });
+  return (dataSet);
+} 

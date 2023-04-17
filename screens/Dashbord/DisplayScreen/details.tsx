@@ -36,7 +36,8 @@ import { FloatingAction } from 'react-native-floating-action';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Screen = ({ navigation }) => {
+const Screen = ({ navigation,route }) => {
+    console.log(route);
     const actions = [
         {
             text: 'Report',

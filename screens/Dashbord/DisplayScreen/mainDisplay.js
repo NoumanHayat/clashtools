@@ -4,7 +4,7 @@
 // /* eslint-disable prettier/prettier */
 // /* eslint-disable react/prop-types */
 // /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import {
     ImageBackground,
@@ -46,7 +46,7 @@ const CustomCard = ({ navigation }) => {
                 </View>
                 <View style={{ marginTop: 10, alignItems: 'flex-end' }}>
                     <AppButton
-                        onPress={() => { navigation.push('details') }}
+                        onPress={() => { navigation.push('details',{a:1,b:2}) }}
                         text="Copy Link"
                         style={{
                             // width: '40%',
@@ -102,7 +102,7 @@ const DATA = [
     },
 ];
 
-const Screen = ({ navigation }) => {
+const Screen = ({ navigation,route }) => {
     const home = true
     const [status, setStatus] = useState('All');
     const tablist = [
@@ -112,18 +112,9 @@ const Screen = ({ navigation }) => {
         { status: 'WAR' },
         { status: 'TROLL' },
     ];
-    // const data = [
-    //     { key: '2', value: 'Appliances' },
-    //     { key: '3', value: 'Cameras' },
-    //     { key: '5', value: 'Vegetables' },
-    //     { key: '6', value: 'Diary Products' },
-    //     { key: '7', value: 'Drinks' },
-    // ];
-    // const [selected, setSelected] = useState('Appliances');
     const setStatusFilter = (status) => {
         setStatus(status);
     }
-
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -144,26 +135,8 @@ const Screen = ({ navigation }) => {
                     })}
                 </ScrollView>
             </View>
-            {/* <View style={{ padding: 10, marginHorizontal: 10 }}>
-                    <SelectList
-                        setSelected={(val) => setSelected(val)}
-                        data={data}
-                        inputStyles={{ color: 'gray' }}
-                        dropdownTextStyles={{ color: 'gray' }}
-                        boxStyles={styles.dropdownBox}
-                        dropdownStyles={{ marginTop: 4 }}
-                        save="value"
-                        search={false}
-                        searchPlaceholder={'Selected'}
-                        arrowicon={<View>
-                            <Feather name="chevron-down" size={24} color="black" />
-                        </View>} />
-                </View> */}
                 </> 
                 : <Text></Text>}
-
-            {/* <ScrollView > */}
-
             <View style={{ flex: 1 }}>
                 <FlatList
                     data={DATA}
