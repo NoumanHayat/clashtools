@@ -17,7 +17,9 @@ import Home from './screens/Dashbord/home';
 import Townhall from './screens/Dashbord/Townhall/Townhall';
 import BuilderHall from './screens/Dashbord/BuilderHall/BuilderHall';
 import attackStrategies from './screens/Dashbord/attackStrategies/attackStrategies';
-import DisplayScreen from './screens/Dashbord/DisplayScreen';
+// import mainDisplay from './screens/Dashbord/mainDisplay';
+import details from './screens/Dashbord/DisplayScreen/details';
+import mainDisplay from './screens/Dashbord/DisplayScreen/mainDisplay';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
@@ -53,7 +55,8 @@ const AppStarting = () => {
               name="attack Strategies"
               component={attackStrategies}
             />
-            <Stack.Screen name="DisplayScreen" children={DisplayScreen} />
+            <Stack.Screen name="mainDisplay" component={mainDisplay} />
+            <Stack.Screen name="details" component={details} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

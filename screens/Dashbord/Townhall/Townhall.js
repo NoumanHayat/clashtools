@@ -18,7 +18,7 @@ import { Card } from 'react-native-elements';
 import ScreenHader from '../../../components/ScreenHaderCopy';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-const Screen = ({ navigation }) => {
+const Screen = ({ navigation,route }) => {
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -34,7 +34,7 @@ const Screen = ({ navigation }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:15,Data:route.params,type:'home'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -48,7 +48,7 @@ const Screen = ({ navigation }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => {  navigation.push('DisplayScreen') }}>
+                                <TouchableOpacity onPress={() => {  navigation.push('mainDisplay',{townHall:14,Data:route.params,type:'home'}) }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}
@@ -65,7 +65,7 @@ const Screen = ({ navigation }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:13,Data:route.params,type:'home'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -79,7 +79,7 @@ const Screen = ({ navigation }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => {  navigation.push('DisplayScreen') }}>
+                                <TouchableOpacity onPress={() => {  navigation.push('mainDisplay',{townHall:12,Data:route.params,type:'home'}) }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}
@@ -96,7 +96,7 @@ const Screen = ({ navigation }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:11,Data:route.params,type:'home'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -110,7 +110,7 @@ const Screen = ({ navigation }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => {  navigation.push('DisplayScreen') }}>
+                                <TouchableOpacity onPress={() => {  navigation.push('mainDisplay',{townHall:10,Data:route.params,type:'home'}) }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}
@@ -127,7 +127,7 @@ const Screen = ({ navigation }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:9,Data:route.params,type:'home'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -141,7 +141,7 @@ const Screen = ({ navigation }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:8,Data:route.params,type:'home'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}

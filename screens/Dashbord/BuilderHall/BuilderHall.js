@@ -42,7 +42,7 @@ const Screen = ({ navigation,route }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}> 
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen',{townHall:9,Data:route.params})}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:9,Data:route.params,type:'builder'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image 
                                             style={{ width: 80, height: 70 }}
@@ -56,7 +56,7 @@ const Screen = ({ navigation,route }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen'); }}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:8,Data:route.params,type:'builder'}); }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}
@@ -73,7 +73,7 @@ const Screen = ({ navigation,route }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:7,Data:route.params,type:'builder'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -87,7 +87,7 @@ const Screen = ({ navigation,route }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen'); }}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:6,Data:route.params,type:'builder'}); }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}
@@ -104,7 +104,7 @@ const Screen = ({ navigation,route }) => {
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen')}}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:5,Data:route.params,type:'builder'})}}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 80, height: 70 }}
@@ -118,7 +118,7 @@ const Screen = ({ navigation,route }) => {
                         </View>
                         <View style={{ width: '50%' }}>
                             <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <TouchableOpacity onPress={() => { navigation.push('DisplayScreen'); }}>
+                                <TouchableOpacity onPress={() => { navigation.push('mainDisplay',{townHall:4,Data:route.params,type:'builder'}); }}>
                                     <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                         <Card.Image
                                             style={{ width: 70, height: 70 }}

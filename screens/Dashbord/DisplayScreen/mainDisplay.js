@@ -4,7 +4,7 @@
 // /* eslint-disable prettier/prettier */
 // /* eslint-disable react/prop-types */
 // /* eslint-disable react-native/no-inline-styles */
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     ImageBackground,
@@ -24,29 +24,29 @@ import AppButton from '../../../components/AppButton';
 
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-const CustomCard = ({ navigation }) => {
+const CustomCard = ({ navigation,item }) => {
     return (
 
         <View style={styles.cardStyle}>
             <View>
                 {true ? (
-                    <Image style={styles.imageStyle} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />) :
+                    <Image style={styles.imageStyle} source={{ uri: item.photoUrl }} />) :
                     <View>
                         <Text>Image is unable to load</Text>
                     </View>}
                 <View style={styles.textArea}>
                     <View>
                         <Text style={{ fontSize: 20, color: 'black' }}>Town Hall</Text>
-                        <Text style={{ fontSize: 13, color: 'gray' }}>Town Hall 15</Text>
+                        <Text style={{ fontSize: 13, color: 'gray' }}>Town Hall  {item.townHall} </Text>
                     </View>
                     <View>
                         <Text style={{ fontSize: 20, color: 'black' }}>Category</Text>
-                        <Text style={{ fontSize: 13, color: 'gray' }}>Farming</Text>
+                        <Text style={{ fontSize: 13, color: 'gray' }}>{(item.type).toUpperCase()}</Text>
                     </View>
                 </View>
                 <View style={{ marginTop: 10, alignItems: 'flex-end' }}>
                     <AppButton
-                        onPress={() => { navigation.push('details',{a:1,b:2}) }}
+                        onPress={() => { navigation.push('details', { a: 1, b: 2 }) }}
                         text="Copy Link"
                         style={{
                             // width: '40%',
@@ -102,7 +102,9 @@ const DATA = [
     },
 ];
 
-const Screen = ({ navigation,route }) => {
+const Screen = ({ navigation, route }) => {
+    console.log(route.params.type);
+    console.log('=================================');
     const home = true
     const [status, setStatus] = useState('All');
     const tablist = [
@@ -115,6 +117,18 @@ const Screen = ({ navigation,route }) => {
     const setStatusFilter = (status) => {
         setStatus(status);
     }
+    const [result, setResult] = useState([{}]);
+    const filteredData = route.params.Data.filter(item =>{
+        if(route.params.type=='builder'){
+            return item.townHall==route.params.townHall && item.baseType==route.params.type && item.active 
+        }else{
+            if(status == 'All'){
+                return item.townHall==route.params.townHall && item.baseType==route.params.type && item.active 
+            }else{
+                return item.townHall==route.params.townHall && item.baseType==route.params.type && item.active && item.type == status.toLowerCase() 
+            }
+        }
+    });
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -124,7 +138,7 @@ const Screen = ({ navigation,route }) => {
 
             }}>
             <ScreenHader title="Select Base" navigation={navigation} onlyBack={true} />
-            {home ? <><View style={{ marginHorizontal: 10 }}>
+            {route.params.type !== 'builder' ? <><View style={{ marginHorizontal: 10 }}>
                 <ScrollView horizontal style={styles.listTab}>
                     {tablist.map((tab) => {
                         return (
@@ -135,13 +149,13 @@ const Screen = ({ navigation,route }) => {
                     })}
                 </ScrollView>
             </View>
-                </> 
+            </>
                 : <Text></Text>}
             <View style={{ flex: 1 }}>
                 <FlatList
-                    data={DATA}
+                    data={filteredData}
                     renderItem={
-                        ({ item }) => <CustomCard navigation={navigation} />
+                        ({ item }) => <CustomCard navigation={navigation} item={item} />
                     }
                     keyExtractor={item => item.id}
                 />
@@ -177,7 +191,7 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         backgroundColor: '#F7F7FE', borderRadius: 10,
-        padding: 10, marginHorizontal: 20, shadowColor: 'black', marginVertical:5,
+        padding: 10, marginHorizontal: 20, shadowColor: 'black', marginVertical: 5,
         shadowOffset: {
             width: 10,
             height: 10,
