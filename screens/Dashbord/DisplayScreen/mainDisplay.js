@@ -32,7 +32,7 @@ const CustomCard = ({ navigation,item }) => {
                 {true ? (
                     <Image style={styles.imageStyle} source={{ uri: item.photoUrl }} />) :
                     <View>
-                        <Text>Image is unable to load</Text>
+                        <Text style={{color:'black'}}>Image is unable to load</Text>
                     </View>}
                 <View style={styles.textArea}>
                     <View>
@@ -150,7 +150,7 @@ const Screen = ({ navigation, route }) => {
                 </ScrollView>
             </View>
             </>
-                : <Text></Text>}
+                : <Text style={{color:'black'}}></Text>}
             <View style={{ flex: 1 }}>
                 <FlatList
                     data={filteredData}

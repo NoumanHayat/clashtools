@@ -36,7 +36,7 @@ export default function ModalLayout({onClose, children}: Props) {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text>X</Text>
+            <Text style={{color:'black'}}>X</Text>
           </TouchableOpacity>
         </View>
         {children}

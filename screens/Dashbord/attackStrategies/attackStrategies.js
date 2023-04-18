@@ -29,7 +29,7 @@ const Screen = ({ navigation }) => {
             <ScrollView >
                 <View style={{ flex: 1 }}>
                     <TouchableOpacity onPress={() => { setInputVisible(true); }}>
-                        <Text>Ok</Text>
+                        <Text style={{color:'black'}}>Ok</Text>
                     </TouchableOpacity>
                 </View>
                 <Modal
@@ -46,7 +46,7 @@ const Screen = ({ navigation }) => {
                         }}
                     >
                         <View style={{ alignItems: 'center' }}>
-                            <Text>Hello</Text>
+                            <Text style={{color:'black'}}>Hello</Text>
                         </View>
                     </ModalLayout>
                 </Modal>
