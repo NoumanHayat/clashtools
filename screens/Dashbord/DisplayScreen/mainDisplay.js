@@ -46,7 +46,7 @@ const CustomCard = ({ navigation,item }) => {
                 </View>
                 <View style={{ marginTop: 10, alignItems: 'flex-end' }}>
                     <AppButton
-                        onPress={() => { navigation.push('details', { a: 1, b: 2 }) }}
+                        onPress={() => { navigation.push('details', { link: item.link, photoUrl: item.photoUrl }) }}
                         text="Copy Link"
                         style={{
                             // width: '40%',
@@ -103,7 +103,7 @@ const DATA = [
 ];
 
 const Screen = ({ navigation, route }) => {
-    console.log(route.params.type);
+    // console.log(route.params.Data);
     console.log('=================================');
     const home = true
     const [status, setStatus] = useState('All');
@@ -157,7 +157,8 @@ const Screen = ({ navigation, route }) => {
                     renderItem={
                         ({ item }) => <CustomCard navigation={navigation} item={item} />
                     }
-                    keyExtractor={item => item.id}
+                    // keyExtractor={item => item._id}
+                    keyExtractor={(item, index) => index.toString()}
                 />
             </View>
         </ImageBackground >

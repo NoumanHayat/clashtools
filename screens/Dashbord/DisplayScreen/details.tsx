@@ -37,7 +37,7 @@ import { FloatingAction } from 'react-native-floating-action';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Screen = ({ navigation,route }) => {
-    console.log(route);
+    console.log(route.params);
     const actions = [
         {
             text: 'Report',
@@ -77,9 +77,9 @@ const Screen = ({ navigation,route }) => {
             <View style={styles.container}>
                 <Image style={{
                     width: '100%',
-                    height: 300,
+                    height: 250,
                     resizeMode: 'stretch',
-                }} source={{ uri: 'https://clashofclans.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/Clash-at-Home_thumbnail_builder_906x506.jpg' }} />
+                }} source={{ uri: route.params.photoUrl }} />
             </View>
             <View style={styles.buttonLine}>
                 <View style={{}}>
@@ -102,7 +102,7 @@ const Screen = ({ navigation,route }) => {
                 <View style={{}}>
                     <AppButton
                         onPress={async () => {
-                            let url = 'http://maps.apple.com/?ll=37.484847,-122.148386%22';
+                            let url = route.params.link;
 
                             const handlePress = async () => {
                                 // Open the custom settings if the app has one

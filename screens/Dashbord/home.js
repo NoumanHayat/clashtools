@@ -26,7 +26,6 @@ import { useData } from './../hooks';
 const Screen = ({ navigation }) => {
     const [vasible, setVasible] = useState(false);
     const { getData } = useData();
-    const [data, setData] = useState([{}])
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
