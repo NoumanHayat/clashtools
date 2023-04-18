@@ -77,7 +77,7 @@ const Screen = ({ navigation,route }) => {
             <View style={styles.container}>
                 <Image style={{
                     width: '100%',
-                    height: 250,
+                    height: 200,
                     resizeMode: 'stretch',
                 }} source={{ uri: route.params.photoUrl }} />
             </View>

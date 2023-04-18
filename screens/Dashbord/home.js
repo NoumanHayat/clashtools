@@ -22,10 +22,31 @@ import { FAB, Card } from 'react-native-elements';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalLayout from '../../components/ModalLayout';
 import { useData } from './../hooks';
+import Lottie from 'lottie-react-native';
+const Screens = () => {
+    return (
+        <Lottie
+            source={require('./../../loadingScreen/loader-animation.json')}
+            colorFilters={[
+                {
+                    keypath: 'button',
+                    color: '#F00000',
+                },
+                {
+                    keypath: 'Sending Loader',
+                    color: '#F00000',
+                },
+            ]}
+            autoPlay
+            loop
+        />
+    );
+}
 
 const Screen = ({ navigation }) => {
     const [vasible, setVasible] = useState(false);
     const { getData } = useData();
+    const [vasibleAnimation, setVasibleAnimation] = useState(false);
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -41,8 +62,11 @@ const Screen = ({ navigation }) => {
                     <View style={{ width: '50%', alignSelf: 'flex-start' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={async () => {
+                                setVasibleAnimation(true);
                                 let res = await getData();
+                                setVasibleAnimation(false);
                                 navigation.push("Builder Hall Base", res);
+
                             }}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
                                     <Card.Image
@@ -58,7 +82,9 @@ const Screen = ({ navigation }) => {
                     <View style={{ width: '50%' }}>
                         <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={async () => {
+                                setVasibleAnimation(true);
                                 let res = await getData();
+                                setVasibleAnimation(false);
                                 navigation.push("Town hall Base", res);
                             }}>
                                 <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
@@ -119,6 +145,31 @@ const Screen = ({ navigation }) => {
                             </Text>
                         </View>
                     </ModalLayout>
+                </Modal>
+                {/* //------------------------------------------------------------------------------- */}
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={vasibleAnimation}
+                    onRequestClose={() => setVasibleAnimation(!vasibleAnimation)}
+                >
+                    <View style={{flex:1,backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
+                        <Lottie
+                            source={require('./../../loadingScreen/loader-animation.json')}
+                            colorFilters={[
+                                {
+                                    keypath: 'button',
+                                    color: '#F00000',
+                                },
+                                {
+                                    keypath: 'Sending Loader',
+                                    color: '#F00000',
+                                },
+                            ]}
+                            autoPlay
+                            loop
+                        />
+                    </View>
                 </Modal>
             </View>
         </ImageBackground >
