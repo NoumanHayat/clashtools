@@ -36,18 +36,18 @@ import { FloatingAction } from 'react-native-floating-action';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Screen = ({ navigation,route }) => {
+const Screen = ({ navigation, route }) => {
     console.log(route.params);
     const actions = [
         {
             text: 'Report',
-            icon: <MaterialIcons name="file-upload" size={24} color="white" />,
+            icon: <MaterialIcons name="bug-report" size={24} color="white" />,
             name: 'Report',
             position: 1
         },
         {
             text: 'Review',
-            icon: images.clanicon,
+            icon: <MaterialIcons name="rate-review" size={24} color="white" />,
             name: 'Review',
             position: 2
         }
@@ -58,14 +58,14 @@ const Screen = ({ navigation,route }) => {
         { key: '3', value: 'Base link does match image' },
         { key: '5', value: 'Something else' },
     ];
-
-    const [selected, setSelected] = useState('Appliances');
+    const [text, onChangeText] = React.useState('');
+    const [selected, setSelected] = useState('Something else');
     const setStatusFilter = (status) => {
         setStatus(status);
     }
     const [vasible, setVasible] = useState(false);
     const [vasibleReport, setVasibleReport] = useState(false);
-    const { Action } = useData();
+    const { Action, sendReport, sendReview } = useData();
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -161,6 +161,7 @@ const Screen = ({ navigation,route }) => {
                                 placeholder="Please Enter review here..."
                                 placeholderTextColor='gray'
                                 autoCapitalize={'none'}
+                                onChangeText={onChangeText}
                                 // multiLine: true
                                 multiline={true}
                                 style={{
@@ -175,7 +176,12 @@ const Screen = ({ navigation,route }) => {
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center' }} >
                             <AppButton
-                                onPress={() => { navigation.push('Status') }}
+                                onPress={async () => {
+                                    setVasible(false);
+                                    await sendReview(route.params.photoUrl, route.params.link, text);
+
+                                    alert('Thank you for your review');
+                                }}
                                 text="Submit"
                                 style={{
                                     // width: '100%',
@@ -198,66 +204,38 @@ const Screen = ({ navigation,route }) => {
             >
                 <ModalLayout onClose={() => setVasibleReport(!vasibleReport)}>
                     <View style={{ alignItems: 'center' }}>
-                        {/* <View style={{ marginRight: 5, ...styles.textBoxSignSmallTitle }}>
-                            <TextInput
-                                placeholder="Title"
-                                placeholderTextColor='gray'
-                                autoCapitalize={'none'}
-                                // multiLine: true
-                                multiline={true}
-                                style={{
-                                    height: 'auto',
-                                    fontSize: 12,
-                                    marginLeft: 20,
-                                    color: 'gray',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
+                        <Text style={{ color: 'black' }}>What would you like to report?</Text>
+                        <View>
+                            <SelectList
+                                setSelected={(val) => setSelected(val)}
+                                data={data}
+                                inputStyles={{ color: 'gray' }}
+                                dropdownTextStyles={{ color: 'gray' }}
+                                boxStyles={styles.dropdownBox}
+                                save="value"
+                                search={false}
+                                placeholder={'Something else'}
+                                searchPlaceholder={'Something else'}
+                                arrowicon={<View >
+                                    <Feather name="chevron-down" size={24} color="black" />
+                                </View>
+                                }
                             />
                         </View>
-                        <View style={{ marginRight: 5, ...styles.textBoxSignSmall }}>
-                            <TextInput
-                                placeholder="Details "
-                                placeholderTextColor='gray'
-                                autoCapitalize={'none'}
-                                // multiLine: true
-                                multiline={true}
-                                style={{
-                                    height: 'auto',
-                                    fontSize: 12,
-                                    marginLeft: 20,
-                                    color: 'gray',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            />
-                        </View> */}
-                        <Text style={{color:'black'}}>What would you like to report?</Text>
-                        <View>
-                        <SelectList
-                            setSelected={(val) => setSelected(val)}
-                            data={data}
-                            inputStyles={{color: 'gray'}}
-                            dropdownTextStyles={{color: 'gray'}}
-                             boxStyles={styles.dropdownBox}
-                            save="value"
-                            search={false}
-                            searchPlaceholder={'Selected'}
-                            arrowicon={<View >
-                                <Feather name="chevron-down" size={24} color="black" />
-                            </View>
-                            }
-                        />
-                    </View>
 
                         <View style={{ justifyContent: 'center', alignItems: 'center' }} >
                             <AppButton
-                                onPress={() => { console.log('ok'); test(); }}
+                                onPress={async () => {
+                                    setVasibleReport(false);
+                                    await sendReport(route.params.photoUrl, route.params.link, selected);
+
+                                    alert('Report Send');
+                                }}
                                 text="Submit"
                                 style={{
-                                    // width: '100%',
                                     marginTop: 30,
                                     paddingHorizontal: 40,
+                                    backgroundColor: 'blue',
                                 }}
                                 textStyle={{ color: 'white', letterSpacing: 2, fontFamily: 'Mulish-Black', fontSize: 20 }}
                             />
@@ -311,6 +289,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         backgroundColor: 'white',
         marginBottom: 0,
-        borderWidth:1
+        borderWidth: 1
     }
 });

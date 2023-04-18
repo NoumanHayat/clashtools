@@ -15,14 +15,13 @@ import HomeTrophy from '../Data/HomeTrophy.json';
 import HomeWar from '../Data/HomeWar.json';
 
 
-export const sendReport = async (baseId: string, title: string, details: string,) => {
+export const sendReport = async (photoUrl: string, link: string, issue: string,) => {
   let response;
   try {
     await firestore().collection('Report').add({
-      baseId: baseId,
-      title: title,
-      details: details,
-      status: false,
+      photoUrl: photoUrl,
+      link: link,
+      issue: issue,
     }).then(function () {
       // console.log({ status: 'success', message: 'User Added Successfully!' })
     }).catch((Error) => {
@@ -70,3 +69,20 @@ export const getData = async () => {
     });
   return (dataSet);
 } 
+export const sendReview = async (photoUrl: string, link: string, review: string,) => {
+  let response;
+  try {
+    await firestore().collection('Review').add({
+      photoUrl: photoUrl,
+      link: link,
+      review: review,
+    }).then(function () {
+      // console.log({ status: 'success', message: 'User Added Successfully!' })
+    }).catch((Error) => {
+      console.log({ status: 'fail', message: Error });
+    })
+  } catch (error) {
+    return ({ status: 'fail', message: error })
+  }
+  return ({ status: 'success', message: 'success' });
+}
