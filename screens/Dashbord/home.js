@@ -13,7 +13,8 @@ import {
     TouchableOpacity,
     Linking,
     Button,
-    Modal
+    Modal,
+    ScrollView
 
 } from 'react-native';
 import { images, SIZES } from '../../constants';
@@ -42,6 +43,13 @@ const Screens = () => {
         />
     );
 }
+import {
+    InterstitialAd,
+    TestIds,
+    AdEventType,
+    BannerAd,
+    BannerAdSize,
+} from 'react-native-google-mobile-ads';
 
 const Screen = ({ navigation }) => {
     const [vasible, setVasible] = useState(false);
@@ -51,71 +59,84 @@ const Screen = ({ navigation }) => {
         <ImageBackground
             source={images.background} resizeMode="cover"
             style={{
-                flex: 1,
+                flex:1,
                 paddingVertical: SIZES.padding,
             }}>
-            <View style={{ flex: 0.4, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ fontSize: 35, color: 'black', fontWeight: "bold" }}>Clash Of Clan Tools</Text>
-            </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ width: '50%', alignSelf: 'flex-start' }}>
-                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={async () => {
-                                setVasibleAnimation(true);
-                                let res = await getData();
-                                setVasibleAnimation(false);
-                                navigation.push("Builder Hall Base", res);
+            <ScrollView>
+                <View style={{marginTop:'15%'}}>
+                    <View style={{ flex: 0.4, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 35, color: 'black', fontWeight: "bold" }}>Clash Of Clan Tools</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: '50%', alignSelf: 'flex-start' }}>
+                                <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity onPress={async () => {
+                                        setVasibleAnimation(true);
+                                        let res = await getData();
+                                        // console.log(res[0]==undefined);
+                                        setVasibleAnimation(false);
+                                        if(res[0]==undefined){
+                                            alert('Please check your internet connection');
+                                        }else{
+                                            navigation.push("Builder Hall Base", res);  
+                                        }
+                                        // navigation.push("Builder Hall Base", res);
 
-                            }}>
-                                <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
-                                    <Card.Image
-                                        style={{ width: 70, height: 70 }}
-                                        resizeMode="cover"
-                                        source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/4/43/Builder_Hall9.png' }}
-                                    />
-                                </View>
-                                <Card.Title>Builder Base</Card.Title>
-                            </TouchableOpacity>
-                        </Card>
-                    </View>
-                    <View style={{ width: '50%' }}>
-                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={async () => {
-                                setVasibleAnimation(true);
-                                let res = await getData();
-                                setVasibleAnimation(false);
-                                navigation.push("Town hall Base", res);
-                            }}>
-                                <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
-                                    <Card.Image
-                                        style={{ width: 70, height: 70 }}
-                                        resizeMode="cover"
-                                        source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/1/1d/Giga_Inferno15-5.png' }}
-                                    />
-                                </View>
-                                <Card.Title>TownHall base</Card.Title>
-                            </TouchableOpacity>
-                        </Card>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ width: '50%', alignSelf: 'flex-start' }}>
-                        <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => { setVasible(true) }}>
-                                <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
-                                    <Card.Image
-                                        style={{ width: 70, height: 70 }}
-                                        resizeMode="cover"
-                                        source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/0/06/LLT_Info.png' }}
-                                    />
-                                </View>
-                                <Card.Title>Paid Bases for trophy push</Card.Title>
-                            </TouchableOpacity>
-                        </Card>
-                    </View>
-                    <View style={{ width: '50%' }}>
-                        {/* <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    }}>
+                                        <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
+                                            <Card.Image
+                                                style={{ width: 70, height: 70 }}
+                                                resizeMode="cover"
+                                                source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/4/43/Builder_Hall9.png' }}
+                                            />
+                                        </View>
+                                        <Card.Title>Builder Base</Card.Title>
+                                    </TouchableOpacity>
+                                </Card>
+                            </View>
+                            <View style={{ width: '50%' }}>
+                                <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity onPress={async () => {
+                                        setVasibleAnimation(true);
+                                        let res = await getData();
+                                        setVasibleAnimation(false);
+                                        if(res[0]==undefined){
+                                            alert('Please check your internet connection');
+                                        }else{
+                                            navigation.push("Town hall Base", res);  
+                                        }
+                                        
+                                    }}>
+                                        <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
+                                            <Card.Image
+                                                style={{ width: 70, height: 70 }}
+                                                resizeMode="cover"
+                                                source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/1/1d/Giga_Inferno15-5.png' }}
+                                            />
+                                        </View>
+                                        <Card.Title>TownHall base</Card.Title>
+                                    </TouchableOpacity>
+                                </Card>
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: '50%', alignSelf: 'flex-start' }}>
+                                <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity onPress={() => { setVasible(true) }}>
+                                        <View style={{ alignItems: 'center', padding: 20, paddingBottom: 0 }}>
+                                            <Card.Image
+                                                style={{ width: 70, height: 70 }}
+                                                resizeMode="cover"
+                                                source={{ uri: 'https://static.wikia.nocookie.net/clashofclans/images/0/06/LLT_Info.png' }}
+                                            />
+                                        </View>
+                                        <Card.Title>Paid Bases for trophy push</Card.Title>
+                                    </TouchableOpacity>
+                                </Card>
+                            </View>
+                            <View style={{ width: '50%' }}>
+                                {/* <Card style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TouchableOpacity onPress={() => { navigation.push("Clash News"); }}>
                                 <View style={{ alignItems: 'center', padding: 20,paddingBottom:10 }}>
                                     <Card.Image
@@ -127,51 +148,57 @@ const Screen = ({ navigation }) => {
                                 <Card.Title>COC News</Card.Title>
                             </TouchableOpacity>
                         </Card> */}
+                            </View>
+                        </View>
+                        <View style={{ marginTop: 20 }}>
+                            <BannerAd unitId={'ca-app-pub-3079210464435975/9088339105'} size={BannerAdSize.LARGE_BANNER} />
+                        </View>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={vasible}
+                            onRequestClose={() => setVasible(!vasible)}
+                        >
+                            <ModalLayout onClose={() => setVasible(!vasible)}>
+                                <View style={{ alignItems: 'center' }}>
+                                    <Text fontWeight="SemiBold" style={{ fontSize: 28, color: 'black' }}>
+                                        Coming Soon! 😀
+                                    </Text>
+                                    <Text fontWeight="Medium" style={{ fontSize: 14, color: 'black' }}>
+                                        Please wait for new version
+                                    </Text>
+                                </View>
+                            </ModalLayout>
+                        </Modal>
+                        {/* //------------------------------------------------------------------------------- */}
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={vasibleAnimation}
+                            onRequestClose={() => setVasibleAnimation(!vasibleAnimation)}
+                        >
+                            <View style={{ flex: 1, backgroundColor: 'rgba(52, 52, 52, 0.8)' }}>
+                                <Lottie
+                                    source={require('./../../loadingScreen/loader-animation.json')}
+                                    colorFilters={[
+                                        {
+                                            keypath: 'button',
+                                            color: '#F00000',
+                                        },
+                                        {
+                                            keypath: 'Sending Loader',
+                                            color: '#F00000',
+                                        },
+                                    ]}
+                                    autoPlay
+                                    loop
+                                />
+                            </View>
+                        </Modal>
+
                     </View>
                 </View>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={vasible}
-                    onRequestClose={() => setVasible(!vasible)}
-                >
-                    <ModalLayout onClose={() => setVasible(!vasible)}>
-                        <View style={{ alignItems: 'center' }}>
-                            <Text fontWeight="SemiBold" style={{ fontSize: 28, color: 'black' }}>
-                                Coming Soon! 😀
-                            </Text>
-                            <Text fontWeight="Medium" style={{ fontSize: 14, color: 'black' }}>
-                                Please wait for new version
-                            </Text>
-                        </View>
-                    </ModalLayout>
-                </Modal>
-                {/* //------------------------------------------------------------------------------- */}
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={vasibleAnimation}
-                    onRequestClose={() => setVasibleAnimation(!vasibleAnimation)}
-                >
-                    <View style={{flex:1,backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
-                        <Lottie
-                            source={require('./../../loadingScreen/loader-animation.json')}
-                            colorFilters={[
-                                {
-                                    keypath: 'button',
-                                    color: '#F00000',
-                                },
-                                {
-                                    keypath: 'Sending Loader',
-                                    color: '#F00000',
-                                },
-                            ]}
-                            autoPlay
-                            loop
-                        />
-                    </View>
-                </Modal>
-            </View>
+            </ScrollView>
         </ImageBackground >
     );
 };

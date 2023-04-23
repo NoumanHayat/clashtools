@@ -5,7 +5,7 @@
 // /* eslint-disable prettier/prettier */
 // /* eslint-disable react/prop-types */
 // /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import {
     ImageBackground,
@@ -32,12 +32,23 @@ import ModalLayout from '../../../components/ModalLayout';
 import { useData } from './../../hooks';
 
 import { FloatingAction } from 'react-native-floating-action';
-
+import {
+    InterstitialAd,
+    TestIds,
+    AdEventType,
+    BannerAd,
+    BannerAdSize,
+} from 'react-native-google-mobile-ads';
+const adUnitId = 'ca-app-pub-3079210464435975/4375030484';
+console.log(adUnitId);
+//  const adUnitId='ca-app-pub-3079210464435975/9171211539';
+const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+    requestNonPersonalizedAdsOnly: false,
+});
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Screen = ({ navigation, route }) => {
-    console.log(route.params);
     const actions = [
         {
             text: 'Report',
@@ -66,6 +77,19 @@ const Screen = ({ navigation, route }) => {
     const [vasible, setVasible] = useState(false);
     const [vasibleReport, setVasibleReport] = useState(false);
     const { Action, sendReport, sendReview } = useData();
+    useEffect(() => {
+        console.log('===================');
+        const unsubscribe = interstitial.addAdEventListener(
+            AdEventType.LOADED,
+            () => {
+                interstitial.show();
+            },
+        );
+        // Start loading the interstitial straight away
+        interstitial.load();
+        // Unsubscribe from events on unmount
+        return unsubscribe;
+    }, []);
     return (
         <ImageBackground
             source={images.background} resizeMode="cover"
@@ -132,6 +156,10 @@ const Screen = ({ navigation, route }) => {
                         textStyle={{ color: 'white', letterSpacing: 2 }}
                     />
                 </View>
+            </View>
+            <View style={{width:'100%'}}>
+
+                <BannerAd unitId={'ca-app-pub-3079210464435975/9088339105'} size={BannerAdSize.LARGE_BANNER} />
             </View>
             <FloatingAction
                 actions={actions}
