@@ -13,6 +13,7 @@ import com.clashtools.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import com.oblador.vectoricons.VectorIconsPackage;
 import java.util.List;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
