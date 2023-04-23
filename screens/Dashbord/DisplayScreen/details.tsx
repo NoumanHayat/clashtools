@@ -107,7 +107,7 @@ const Screen = ({ navigation, route }) => {
             </View>
             <View style={styles.buttonLine}>
                 <View style={{}}>
-                    <AppButton
+                    {/* <AppButton
                         onPress={async () => {
                             const handlePress = async () => {
                                 Action();
@@ -121,7 +121,7 @@ const Screen = ({ navigation, route }) => {
                         }}
                         // icon={icons.stats}
                         textStyle={{ color: 'white', letterSpacing: 2 }}
-                    />
+                    /> */}
                 </View>
                 <View style={{}}>
                     <AppButton
@@ -157,7 +157,7 @@ const Screen = ({ navigation, route }) => {
                     />
                 </View>
             </View>
-            <View style={{width:'100%'}}>
+            <View style={{width:'100%',justifyContent:'center',alignItems:'center'}}>
 
                 <BannerAd unitId={'ca-app-pub-3079210464435975/9088339105'} size={BannerAdSize.LARGE_BANNER} />
             </View>
